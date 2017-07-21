@@ -21,6 +21,7 @@ from astroML.datasets import fetch_sdss_sspp
 # result in an error if LaTeX is not installed on your system.  In that case,
 # you can set usetex to False.
 from astroML.plotting import setup_text_plots
+from astroML.datasets import fetch_imaging_sample
 setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
@@ -37,7 +38,7 @@ H, FeH_bins, alphFe_bins = np.histogram2d(data['FeH'], data['alphFe'], 50)
 
 #------------------------------------------------------------
 # Compute the KMeans clustering
-n_clusters = 4
+n_clusters = 6
 
 scaler = preprocessing.StandardScaler()
 clf = KMeans(n_clusters)

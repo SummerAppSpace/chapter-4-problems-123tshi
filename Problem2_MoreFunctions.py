@@ -23,29 +23,35 @@ from astroML.datasets import fetch_dr7_quasar
 # result in an error if LaTeX is not installed on your system.  In that case,
 # you can set usetex to False.
 from astroML.plotting import setup_text_plots
-setup_text_plots(fontsize=8, usetex=True)
 
-#------------------------------------------------------------
-# Fetch the quasar data
-data = fetch_dr7_quasar()
+def plot_quasars(marker='.', markersize=2, linestyle='none', color='black'):
 
-# select the first 10000 points
-data = data[:10000]
+    setup_text_plots(fontsize=8, usetex=True)
 
-r = data['mag_r']
-i = data['mag_i']
-z = data['redshift']
+    #------------------------------------------------------------
+    # Fetch the quasar data
+    data = fetch_dr7_quasar()
 
-#------------------------------------------------------------
-# Plot the quasar data
-fig, ax = plt.subplots(figsize=(5, 3.75))
-ax.plot(z, r - i, marker='.', markersize=2, linestyle='none', color='black')
+    # select the first 10000 points
+    data = data[:10000]
 
-ax.set_xlim(0, 5)
-ax.set_ylim(-0.5, 1.0)
+    r = data['mag_r']
+    i = data['mag_i']
+    z = data['redshift']
 
-ax.set_xlabel(r'${\rm redshift}$')
-ax.set_ylabel(r'${\rm r-i}$')
-fig.savefig("problem2.png")
+    #------------------------------------------------------------
+    # Plot the quasar data
+    fig, ax = plt.subplots(figsize=(5, 3.75))
+    ax.plot(z, r - i, marker=marker, markersize=markersize, linestyle=linestyle, color=color)
 
+    ax.set_xlim(0, 5)
+    ax.set_ylim(-0.5, 1.0)
+
+    ax.set_xlabel(r'${\rm redshift}$')
+    ax.set_ylabel(r'${\rm r-i}$')
+    fig.savefig("problem2" + str(marker) + str(markersize) + str(linestyle) + str(color) + ".png")
+
+plot_quasars()
+plot_quasars(markersize=2, linestyle="solid", color="#0effff")
+plot_quasars(marker="*", markersize=10, color="#0effff")
 
