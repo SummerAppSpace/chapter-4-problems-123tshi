@@ -8,3 +8,7 @@
 # C) Using your module: go ahead an use plot_quasars here.
 
 # NOTE: if your module wasn't in the same directory as the directory from which you run the python interpreter, you will have to make sure the directory it is in is on the PYTHONPATH
+
+from Problem2_MoreFunctions import plot_quasars
+
+plot_quasars(marker="*", markersize=20, color="#FFE4C4")
