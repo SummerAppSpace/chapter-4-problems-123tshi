@@ -31,7 +31,7 @@ objtype = data['type']
 
 stars = data[objtype == 6][:5000]
 galaxies = data[objtype == 3][:5000]
-
+print(galaxies[0]['gRaw'])
 #------------------------------------------------------------
 # Plot the stars and galaxies
 plot_kwargs = dict(color='k', linestyle='none', marker='.', markersize=1)
@@ -41,6 +41,8 @@ ax1 = fig.add_subplot(221)
 ax1.plot(galaxies['gRaw'] - galaxies['rRaw'],
          galaxies['rRaw'],
          **plot_kwargs)
+
+
 
 ax2 = fig.add_subplot(223, sharex=ax1)
 ax2.plot(galaxies['gRaw'] - galaxies['rRaw'],
